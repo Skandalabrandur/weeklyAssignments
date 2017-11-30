@@ -1,0 +1,12 @@
+Name:  Marri
+Age:   12
+Power: Flying
+Name:  googo
+Age:   159
+Power: Hacker
+Name:  Bubberton
+Age:   14
+Power: None
+Name:  Hausenschwiffer
+Age:   78
+Power: Flying

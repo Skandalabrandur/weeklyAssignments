@@ -1,0 +1,3 @@
+This text was written by calling ./verkefni1a-ii
+Jee willikers this is splendid
+I'm going to terminate the next line with a \
