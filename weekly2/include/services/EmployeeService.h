@@ -3,10 +3,12 @@
 #include "EmployeeSalaryRecord.h"
 
 class EmployeeService {
-public:
-  void addRecord(EmployeeSalaryRecord& record);
-  void listRecords();
-private:
+    public:
+      void addRecord(EmployeeSalaryRecord& record);
+      void listRecords();
+
+    private:
+
 };
 
 #endif

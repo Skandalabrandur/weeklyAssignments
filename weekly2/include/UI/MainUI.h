@@ -11,7 +11,7 @@ class MainUI
     public:
         MainUI();
         void mainMenu();
-        //void validateUserInput(char input);
+        void validateUserInput(char input);
 };
 
 #endif // MAINUI_H

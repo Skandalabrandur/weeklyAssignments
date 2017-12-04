@@ -24,8 +24,9 @@ void MainUI::mainMenu(){
     }while(choice != 'a' && choice != 'b' && choice != 'c' && choice != 'd' && choice != 'q');
 }
 
-/*
+
 void MainUI::validateUserInput(char input){
 
+
 }
-*/
+

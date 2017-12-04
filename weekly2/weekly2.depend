@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1512403685 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\main.cpp
+	<iostream>
+	"EmployeeSalaryRecord.h"
+	"EmployeeService.h"
+	"MainUI.h"
+
+1512404497 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\models\employeesalaryrecord.h
+	<string>
+
+1512400021 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\ui\mainui.h
+
+1512404986 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\models\employeesalaryrecord.cpp
+	"EmployeeSalaryRecord.h"
+	<string>
+	<iostream>
+
+1512404392 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\repositories\employeerepository.cpp
+	"EmployeeRepository.h"
+	"EmployeeService.h"
+
+1512403685 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\ui\mainui.cpp
+	"MainUI.h"
+	<iostream>
+
+1512404497 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\services\employeeservice.cpp
+	"EmployeeService.h"
+	<fstream>
+	<iostream>
+

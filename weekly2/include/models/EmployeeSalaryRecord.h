@@ -15,10 +15,10 @@ class EmployeeSalaryRecord
 
     public:
         EmployeeSalaryRecord(string name,
-          long long socialSecurityNumber,
-          int salary,
-          int month,
-          int year);
+        long long socialSecurityNumber,
+        int salary,
+        int month,
+        int year);
         string toString();
         EmployeeSalaryRecord();
 };

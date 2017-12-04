@@ -3,11 +3,11 @@
 
 void EmployeeRepository::addRecord(EmployeeSalaryRecord& record) {
   EmployeeService service;
-  if isValidRecord(record) {
+  if(isValidRecord(record)) {
     service.addRecord(record);
   }
 }
 
-bool EmployeeRepository::isValidRecord() {
+bool EmployeeRepository::isValidRecord(EmployeeSalaryRecord& record) {
   return true;
 }
