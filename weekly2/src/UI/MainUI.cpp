@@ -1,8 +1,4 @@
 #include "MainUI.h"
-#include "EmployeeService.h"
-
-#include <iostream>
-using namespace std;
 
 MainUI::MainUI()
 {
@@ -13,60 +9,70 @@ void MainUI::mainMenu(){
 
     char choice;
     do{
-        cout << "Choose and action" << endl << endl;
+        cout << "Choose an action" << endl << endl;
         cout << "a - add salary record" << endl;
-        cout << "b - get all salary records" << endl;
-        cout << "c - get total salary for a given year" << endl;
-        cout << "d - get the name of the employee with highest salary" << endl;
+        cout << "b - get all salary records for a given social security number" << endl;
+        cout << "c - get total salary for a given year and social security number" << endl;
+        cout << "d - get the name of the employee with highest salary for a given year" << endl;
         cout << "q - quit" << endl;
         cout << endl;
 
         cin >> choice;
     }while(choice != 'a' && choice != 'b' && choice != 'c' && choice != 'd' && choice != 'q');
 
-    if(choice == 'a'){
-
-        //make new record
-        string name;
-        cin >> name;
-
-        long long socialSecurityNumber;
-        cin >> socialSecurityNumber;
-
-        int salary;
-        cin >> salary;
-
-        int month;
-        cin >> month;
-
-        int year;
-        cin >> year;
-
-        EmployeeSalaryRecord employeeSRecrod(name, socialSecurityNumber, salary, month, year);
-
-        EmployeeService employeeService;
-        employeeService.addRecord(employeeSRecrod);
-    }
-    else if(choice == 'b'){
-
-    }
-    else if(choice == 'c'){
-
-    }
-    else if(choice == 'd'){
-
-    }
+    validateUserInput(choice);
 }
 
-/*
+
 void MainUI::validateUserInput(char input){
 
-
+    if(input == 'a'){
+        //make new record
+        EmployeeSalaryRecord employeeSRecrod(createRecord());
+        //save the record
+        _employeeService.addRecord(employeeSRecrod);
+        mainMenu();
+    }
+    else if(input == 'b'){
+        //get all salary records for a given social security number
+        _employeeService.listRecords();
+    }
+    else if(input == 'c'){
+        //get total salary for a given year and social security number
+        //_employeeService function call
+    }
+    else if(input == 'd'){
+        //get the name of the employee with highest salary for a given year
+        //_employeeService function call
+    }
 }
-*/
 
-/*
-void MainUI::createRecord(){
 
+
+EmployeeSalaryRecord MainUI::createRecord(){
+    cout << "Name: ";
+    string name;
+    cin.ignore();   //if a character is left in the stream
+    getline(cin, name);
+
+    long long socialSecurityNumber;
+    cout << "Social security number: ";
+    cin >> socialSecurityNumber;
+
+    int salary;
+    cout << "Salary: ";
+    cin >> salary;
+
+    int month;
+    cout << "Month: ";
+    cin >> month;
+
+    int year;
+    cout << "Year: ";
+    cin >> year;
+    cout << endl;
+
+    EmployeeSalaryRecord record(name, socialSecurityNumber, salary, month, year);
+
+    return record;
 }
-*/

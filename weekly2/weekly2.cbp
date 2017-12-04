@@ -3,6 +3,7 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="weekly2" />
+		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -40,9 +41,13 @@
 		</Compiler>
 		<Unit filename="include/UI/MainUI.h" />
 		<Unit filename="include/models/EmployeeSalaryRecord.h" />
+		<Unit filename="include/repositories/EmployeeRepository.h" />
+		<Unit filename="include/services/EmployeeService.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/UI/MainUI.cpp" />
 		<Unit filename="src/models/EmployeeSalaryRecord.cpp" />
+		<Unit filename="src/repositories/EmployeeRepository.cpp" />
+		<Unit filename="src/services/EmployeeService.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -9,13 +9,13 @@ using namespace std;
 class MainUI
 {
     private:
-
+        EmployeeService _employeeService;
 
     public:
         MainUI();
         void mainMenu();
         void validateUserInput(char input);
-        void createReacord();
+        EmployeeSalaryRecord createRecord();
 };
 
 #endif // MAINUI_H
