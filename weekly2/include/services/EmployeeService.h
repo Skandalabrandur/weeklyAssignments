@@ -5,7 +5,7 @@
 class EmployeeService {
 public:
   void addRecord(EmployeeSalaryRecord& record);
-
+  void listRecords();
 private:
 };
 
