@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1512396065 source:c:\users\helga eyþórsdóttir\desktop\skóli\verklegt námskeið 1\verkefni2\main.cpp
+	<iostream>
+
+1512396065 source:c:\users\helga eyþórsdóttir\desktop\skóli\verklegt námskeið 1\verkefni2\src\models\employeesalaryrecord.cpp
+	"EmployeeSalaryRecord.h"
+
+1512396441 c:\users\helga eyþórsdóttir\desktop\skóli\verklegt námskeið 1\verkefni2\include\models\employeesalaryrecord.h
+	<string>
+
