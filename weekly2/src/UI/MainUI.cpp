@@ -1,4 +1,5 @@
 #include "MainUI.h"
+#include "EmployeeService.h"
 
 #include <iostream>
 using namespace std;
@@ -22,11 +23,50 @@ void MainUI::mainMenu(){
 
         cin >> choice;
     }while(choice != 'a' && choice != 'b' && choice != 'c' && choice != 'd' && choice != 'q');
+
+    if(choice == 'a'){
+
+        //make new record
+        string name;
+        cin >> name;
+
+        long long socialSecurityNumber;
+        cin >> socialSecurityNumber;
+
+        int salary;
+        cin >> salary;
+
+        int month;
+        cin >> month;
+
+        int year;
+        cin >> year;
+
+        EmployeeSalaryRecord employeeSRecrod(name, socialSecurityNumber, salary, month, year);
+
+        EmployeeService employeeService;
+        employeeService.addRecord(employeeSRecrod);
+    }
+    else if(choice == 'b'){
+
+    }
+    else if(choice == 'c'){
+
+    }
+    else if(choice == 'd'){
+
+    }
 }
 
-
+/*
 void MainUI::validateUserInput(char input){
 
 
 }
+*/
 
+/*
+void MainUI::createRecord(){
+
+}
+*/
