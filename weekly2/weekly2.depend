@@ -1,10 +1,29 @@
 # depslib dependency file v1.0
-1512396065 source:c:\users\helga eyþórsdóttir\desktop\skóli\verklegt námskeið 1\verkefni2\main.cpp
+1512400744 source:c:\users\helga eyþórsdóttir\desktop\verk1\weekly2\main.cpp
 	<iostream>
+	"MainUI.h"
 
-1512396065 source:c:\users\helga eyþórsdóttir\desktop\skóli\verklegt námskeið 1\verkefni2\src\models\employeesalaryrecord.cpp
+1512400021 c:\users\helga eyþórsdóttir\desktop\verk1\weekly2\ui\mainui.h
+
+1512400021 source:c:\users\helga eyþórsdóttir\desktop\verk1\weekly2\src\models\employeesalaryrecord.cpp
 	"EmployeeSalaryRecord.h"
 
-1512396441 c:\users\helga eyþórsdóttir\desktop\skóli\verklegt námskeið 1\verkefni2\include\models\employeesalaryrecord.h
+1512400349 c:\users\helga eyþórsdóttir\desktop\verk1\weekly2\include\models\employeesalaryrecord.h
 	<string>
+
+1512400744 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\main.cpp
+	<iostream>
+	"MainUI.h"
+
+1512400021 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\ui\mainui.h
+
+1512400021 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\models\employeesalaryrecord.cpp
+	"EmployeeSalaryRecord.h"
+
+1512400349 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\models\employeesalaryrecord.h
+	<string>
+
+1512401429 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\ui\mainui.cpp
+	"MainUI.h"
+	<iostream>
 

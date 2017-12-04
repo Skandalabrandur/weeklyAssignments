@@ -8,7 +8,7 @@ class EmployeeSalaryRecord
 {
     private:
         string name;
-        int socialSecurityNumber;
+        long long socialSecurityNumber;
         int salary;
         int month;
         int year;
