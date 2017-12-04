@@ -22,3 +22,4 @@ string EmployeeSalaryRecord::toString() {
           to_string(_month) + " " +
           to_string(_year);
 }
+
