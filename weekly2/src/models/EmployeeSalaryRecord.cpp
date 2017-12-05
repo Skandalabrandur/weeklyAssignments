@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-EmployeeSalaryRecord::EmployeeSalaryRecord(string name, long long socialSecurityNumber, int salary, int month, int year) {
+EmployeeSalaryRecord::EmployeeSalaryRecord(string name, string socialSecurityNumber, int salary, int month, int year) {
       _name = name;
       _socialSecurityNumber = socialSecurityNumber;
       _salary = salary;
@@ -11,6 +11,16 @@ EmployeeSalaryRecord::EmployeeSalaryRecord(string name, long long socialSecurity
       _year = year;
 }
 
-string EmployeeSalaryRecord::toString() {
+ostream& operator << (ostream& out, const EmployeeSalaryRecord& employeeSR){
+    out << employeeSR._name << ", " << employeeSR._socialSecurityNumber << ", " << employeeSR._salary << ", "
+        << employeeSR._month << ", " << employeeSR._year;
 
+        return out;
+}
+
+istream& operator >> (istream& in, EmployeeSalaryRecord& employeeSR){
+    //in >> employeeSR._name >> ", " >> employeeSR._socialSecurityNumber >> ", " >> employeeSR._salary >> ", "
+    //    >> employeeSR._month >> ", " >> employeeSR._year;
+
+    return in;
 }

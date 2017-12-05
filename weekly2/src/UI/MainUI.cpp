@@ -1,4 +1,5 @@
 #include "MainUI.h"
+#include "stdlib.h"
 
 MainUI::MainUI()
 {
@@ -36,10 +37,11 @@ void MainUI::validateUserInput(char input){
     else if(input == 'b'){
         //get all salary records for a given social security number
         cout << "Social security number: ";
-        long long ssn;
+        string ssn;
         cin >> ssn;
         //all records for ssn
-        //_employeeService.listRecords();
+        _employeeService.listRecordsBySecurityNumber(ssn);
+        cout << endl;
         mainMenu();
     }
     else if(input == 'c'){
@@ -52,6 +54,9 @@ void MainUI::validateUserInput(char input){
         //_employeeService function call
         mainMenu();
     }
+    else if(input == 'q'){
+        exit(0);
+    }
 }
 
 
@@ -62,7 +67,7 @@ EmployeeSalaryRecord MainUI::createRecord(){
     cin.ignore();   //if a character is left in the stream
     getline(cin, name);
 
-    long long socialSecurityNumber;
+    string socialSecurityNumber;
     cout << "Social security number: ";
     cin >> socialSecurityNumber;
 
