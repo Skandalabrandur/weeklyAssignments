@@ -17,6 +17,11 @@ class EmployeeSalaryRecord
     public:
         EmployeeSalaryRecord(string name, string socialSecurityNumber, int salary, int month, int year);
         EmployeeSalaryRecord();
+        string getName();
+        string getSSN();
+        int getSalary();
+        int getMonth();
+        int getYear();
         friend ostream& operator << (ostream& out, const EmployeeSalaryRecord& employeeSR);
         friend istream& operator << (istream& in, EmployeeSalaryRecord& employeeSR);
 };

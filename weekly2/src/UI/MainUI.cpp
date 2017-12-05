@@ -39,9 +39,10 @@ void MainUI::validateUserInput(char input){
         cout << "Social security number: ";
         string ssn;
         cin >> ssn;
+        cout << endl;
         //all records for ssn
         _employeeService.listRecordsBySecurityNumber(ssn);
-        cout << endl;
+        cout << endl << endl;
         mainMenu();
     }
     else if(input == 'c'){

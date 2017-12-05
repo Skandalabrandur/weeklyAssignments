@@ -2,12 +2,8 @@
 #include "EmployeeService.h"
 
 void EmployeeRepository::addRecord(EmployeeSalaryRecord& record) {
-  EmployeeService service;
-  if(isValidRecord(record)) {
-    service.addRecord(record);
-  }
-}
-
-bool EmployeeRepository::isValidRecord(EmployeeSalaryRecord& record) {
-  return true;
+    ofstream fout;
+    fout.open("data/records.txt", ios::app);
+    fout << record << endl;
+    fout.close();
 }
