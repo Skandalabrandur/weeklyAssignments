@@ -35,23 +35,30 @@ void MainUI::validateUserInput(char input){
     }
     else if(input == 'b'){
         //get all salary records for a given social security number
-        _employeeService.listRecords();
+        cout << "Social security number: ";
+        long long ssn;
+        cin >> ssn;
+        //all records for ssn
+        //_employeeService.listRecords();
+        mainMenu();
     }
     else if(input == 'c'){
         //get total salary for a given year and social security number
         //_employeeService function call
+        mainMenu();
     }
     else if(input == 'd'){
         //get the name of the employee with highest salary for a given year
         //_employeeService function call
+        mainMenu();
     }
 }
 
 
 
 EmployeeSalaryRecord MainUI::createRecord(){
-    cout << "Name: ";
     string name;
+    cout << "Name: ";
     cin.ignore();   //if a character is left in the stream
     getline(cin, name);
 

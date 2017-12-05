@@ -14,11 +14,7 @@ class EmployeeSalaryRecord
         int _year;
 
     public:
-        EmployeeSalaryRecord(string name,
-        long long socialSecurityNumber,
-        int salary,
-        int month,
-        int year);
+        EmployeeSalaryRecord(string name, long long socialSecurityNumber, int salary, int month, int year);
         string toString();
         EmployeeSalaryRecord();
 };

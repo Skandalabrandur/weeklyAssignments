@@ -5,12 +5,12 @@
 	"EmployeeService.h"
 	"MainUI.h"
 
-1512404497 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\models\employeesalaryrecord.h
+1512470662 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\models\employeesalaryrecord.h
 	<string>
 
 1512400021 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\ui\mainui.h
 
-1512404986 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\models\employeesalaryrecord.cpp
+1512470472 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\models\employeesalaryrecord.cpp
 	"EmployeeSalaryRecord.h"
 	<string>
 	<iostream>
@@ -19,10 +19,8 @@
 	"EmployeeRepository.h"
 	"EmployeeService.h"
 
-1512418272 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\ui\mainui.cpp
+1512419705 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\ui\mainui.cpp
 	"MainUI.h"
-	"EmployeeService.h"
-	<iostream>
 
 1512404497 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\services\employeeservice.cpp
 	"EmployeeService.h"
