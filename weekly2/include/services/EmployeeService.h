@@ -21,16 +21,15 @@ class EmployeeService {
       void listRecordsBySecurityNumber(string ssn);
       bool isValidRecord(EmployeeSalaryRecord& record);
 
+      bool isValidName(EmployeeSalaryRecord& record);
       bool isValidSSN(EmployeeSalaryRecord& record);
       bool isValidSalary(EmployeeSalaryRecord& record);
       bool isValidMonth(EmployeeSalaryRecord& record);
       bool isValidYear(EmployeeSalaryRecord& record);
-      bool isValidName(EmployeeSalaryRecord& record);
 
     private:
         EmployeeRepository _employeeRepo;
         vector<string> _records;
-
 };
 
 #endif

@@ -3,13 +3,13 @@
 #include <iostream>
 
 void EmployeeService::addRecord(EmployeeSalaryRecord& record){
-    if(isValidSSN(record)){
+    if(isValidName(record) && isValidSSN(record) && isValidSalary(record) && isValidMonth(record) && isValidYear(record)){
        _employeeRepo.addRecord(record);
     }
 }
 
 void EmployeeService::listAllRecords(){
-    string str;
+    /*string str;
 
     ifstream fin;
     fin.open("data/records.txt");
@@ -20,27 +20,23 @@ void EmployeeService::listAllRecords(){
         }
         cout << endl;
         fin.close();
+    }*/
+
+    _records = _employeeRepo.readRedcordToVector();
+
+    for(unsigned int i = 0; i < _records.size(); i++){
+        cout << _records.at(i) << ", ";
     }
 }
 
 void EmployeeService::listRecordsBySecurityNumber(string ssn){
-    string str;
-    ifstream fin;
-    fin.open("data/records.txt");
-
-    if(fin.is_open()){
-        while(getline(fin, str, ',')){
-            //put the information from the file into a vector
-            _records.push_back(str);
-        }
-        fin.close();
-    }
+    _records = _employeeRepo.readRedcordToVector();
 
     cout << "Records: " << endl;
     //finding the lines with chosen number needs to be implemented
     //--------- find a way to only check the social security number --------
     for(unsigned int i = 0; i < _records.size(); i++){
-        if(_records.at(i) == " " + ssn){
+        if(_records.at(i) == ssn){
             for(unsigned int k = i - 1; k < i + 4; k++){
                 //if sentence to not print a comma at the end
                 if(!(k == i + 3)){
@@ -57,9 +53,12 @@ void EmployeeService::listRecordsBySecurityNumber(string ssn){
 
 bool EmployeeService::isValidName(EmployeeSalaryRecord& record) {
     //TO DO: validate name
-
-        //throw InvalidNameException();
-
+    string name = record.getName();
+    for(unsigned int i = 0; i < name.length(); i++){
+        if(!((name[i] <= 'z' && name[i] >= 'a') || (name[i] <= 'Z' && name[i] >= 'A') || (name[i] == ' '))){
+            throw InvalidNameException();
+        }
+    }
     return true;
 }
 

@@ -32,8 +32,8 @@ int EmployeeSalaryRecord::getYear(){
 }
 
 ostream& operator << (ostream& out, const EmployeeSalaryRecord& employeeSR){
-    out << employeeSR._name << ", " << employeeSR._socialSecurityNumber << ", " << employeeSR._salary << ", "
-        << employeeSR._month << ", " << employeeSR._year << ", ";
+    out << employeeSR._name << "," << employeeSR._socialSecurityNumber << "," << employeeSR._salary << ","
+        << employeeSR._month << "," << employeeSR._year << ",";
 
         return out;
 }

@@ -7,3 +7,20 @@ void EmployeeRepository::addRecord(EmployeeSalaryRecord& record) {
     fout << record << endl;
     fout.close();
 }
+
+
+vector<string> EmployeeRepository::readRedcordToVector(){
+    vector<string> vrecords;
+    string str;
+    ifstream fin;
+    fin.open("data/records.txt");
+
+    if(fin.is_open()){
+        while(getline(fin, str, ',')){
+            //put the information from the file into a vector
+            vrecords.push_back(str);
+        }
+        fin.close();
+    }
+    return vrecords;
+}
