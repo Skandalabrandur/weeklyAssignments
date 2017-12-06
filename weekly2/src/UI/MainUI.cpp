@@ -34,20 +34,21 @@ void MainUI::validateUserInput(char input){
         try{
             _employeeService.addRecord(employeeSRecrod);
         }
+        //exceptions
         catch(InvalidNameException){
-            cout << "Invalid name." << endl;
+            cout << "Invalid name." << endl << endl;;
         }
         catch(InvalidSSNException){
-            cout << "Invalid social security number." << endl;
+            cout << "Invalid social security number." << endl << endl;;
         }
         catch(InvalidSalaryException){
-            cout << "Invalid salary." << endl;
+            cout << "Invalid salary." << endl << endl;;
         }
         catch(InvalidMonthException){
-            cout << "Invalid month." << endl;
+            cout << "Invalid month." << endl << endl;;
         }
         catch(InvalidYearException){
-            cout << "Invalid year." << endl;
+            cout << "Invalid year." << endl << endl;;
         }
 
         mainMenu();
@@ -59,6 +60,7 @@ void MainUI::validateUserInput(char input){
         cin >> ssn;
         cout << endl;
         //all records for ssn
+        cout << "Records: " << endl;
         _employeeService.listRecordsBySecurityNumber(ssn);
         cout << endl << endl;
         mainMenu();
@@ -70,16 +72,22 @@ void MainUI::validateUserInput(char input){
         string ssn;
         cin >> ssn;
         cout << "Year: ";
-        int year;
+        string year;
         cin >> year;
         cout << endl;
 
+        cout << "Total salary: " << endl;
         _employeeService.getSalaryForSSNandYear(ssn, year);
+        cout << endl;
         mainMenu();
     }
     else if(input == 'd'){
         //get the name of the employee with highest salary for a given year
-        //_employeeService function call
+        cout << "Year: ";
+        string year;
+        cin >> year;
+        cout << endl;
+        _employeeService.getHighestSalaryForYear(year);
         mainMenu();
     }
     else if(input == 'q'){

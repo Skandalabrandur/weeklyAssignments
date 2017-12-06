@@ -8,19 +8,6 @@ void EmployeeService::addRecord(EmployeeSalaryRecord& record){
 }
 
 void EmployeeService::listAllRecords(){
-    /*string str;
-
-    ifstream fin;
-    fin.open("data/records.txt");
-
-    if(fin.is_open()){
-        while(fin >> str){
-            cout << str << " ";
-        }
-        cout << endl;
-        fin.close();
-    }*/
-
     _records = _employeeRepo.readRedcordToVector();
 
     for(unsigned int i = 0; i < _records.size() - 1; i++){
@@ -29,34 +16,100 @@ void EmployeeService::listAllRecords(){
 }
 
 void EmployeeService::listRecordsBySecurityNumber(string ssn){
-    _records = _employeeRepo.readRedcordToVector();
+    _records = _employeeRepo.readLinesToVector();
 
-    cout << "Records: " << endl;
-
-    for(unsigned int i = 1; i < _records.size(); i += 5){
-        if(_records.at(i) == ssn){
-            for(unsigned int k = i - 1; k < i + 4; k++){
-                //to not print a comma at the end
-                if(!(k == i + 3)){
-                    cout << _records.at(k) << ", ";
-                }
-                else{
-                    cout << _records.at(k);
+    for(unsigned int i = 0; i < _records.size(); i++){
+        string line = _records.at(i);
+        vector<string> words = split(line);
+        for(unsigned int i = 0; i < words.size(); i++){
+            //ssn is at index 1
+            if(words.at(1) == ssn){
+                cout << words.at(i) << " ";
+                //end line between records
+                if((i % 4 == 0) && i != 0){
+                    cout << endl;
                 }
             }
         }
     }
-}
-
-void EmployeeService::getSalaryForSSNandYear(string ssn, int year){
-    _records = _employeeRepo.readRedcordToVector();
-
-    cout << "Salary: " << endl;
 
 }
 
+void EmployeeService::getSalaryForSSNandYear(string ssn, string year){
+    _records = _employeeRepo.readLinesToVector();
 
+    int totalSalary = 0;
+    for(unsigned int i = 0; i < _records.size(); i++){
+        string line = _records.at(i);
+        vector<string> words = split(line);
+        for(unsigned int i = 0; i < words.size(); i++){
+            //ssn is at index 1 and year is at index 4
+            if((words.at(1) == ssn) && words.at(4) == year){
+                //salary is at index 2
+                //string to int
+                if(i == 2){
+                    int salary = 0;
+                    istringstream ss(words.at(2));
+                    ss >> salary;
+                    totalSalary += salary;
+                }
+            }
+        }
+    }
+    cout << totalSalary << endl;
 
+}
+
+void EmployeeService::getHighestSalaryForYear(string year){
+    vector<string> _records = _employeeRepo.readLinesToVector();
+    string employeeHighestSalary = "";
+    int salary = 0;
+    int highestSalary = 0;
+
+    for(unsigned int i = 0; i < _records.size(); i++){
+        string line = _records.at(i);
+        vector<string> words = split(line);
+
+        if(words.at(4) == year){
+            int tempsalary;
+            istringstream ss(words.at(2));
+            ss >> tempsalary;
+            salary = tempsalary;
+
+            cout << endl << "comparison: " << endl;
+            cout << "salary: " << salary << endl;
+            cout << "highest salary: " << highestSalary << endl;
+
+            if(highestSalary < salary){
+                highestSalary = salary;
+                employeeHighestSalary = words.at(0);
+                cout << "highest salary name: " << words.at(0) << endl;
+            }
+        }
+
+    }
+    cout << "Employee with the highest salary " << year << " was " << employeeHighestSalary << endl;
+}
+
+vector<string> EmployeeService::split(string str){
+    vector<string> words;               //initialize vector
+    string builder;                     //initialize string for building words
+      for(unsigned int i = 0; i < str.size(); i++) {
+        if(str[i] != ',') {
+          builder = builder + str[i];  //until delimiter, add character to builder
+
+          //We do this if instead of being crazy and accessing the '\0' out of bounds
+          if( i == (str.size() - 1) ) {
+            words.push_back(builder);
+          }
+        } else {
+          //we have
+          words.push_back(builder);
+          builder = "";
+        }
+  }
+  return words;
+}
 
 //functions for validation of a record
 bool EmployeeService::isValidName(EmployeeSalaryRecord& record) {

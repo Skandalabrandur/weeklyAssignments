@@ -20,7 +20,9 @@ class EmployeeService {
       void addRecord(EmployeeSalaryRecord& record);
       void listAllRecords();
       void listRecordsBySecurityNumber(string ssn);
-      void getSalaryForSSNandYear(string ssn, int year);
+      void getSalaryForSSNandYear(string ssn, string year);
+      void getHighestSalaryForYear(string year);
+      vector<string> split(string str);
 
       bool isValidName(EmployeeSalaryRecord& record);
       bool isValidSSN(EmployeeSalaryRecord& record);

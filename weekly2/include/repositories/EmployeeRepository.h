@@ -10,6 +10,7 @@ class EmployeeRepository {
 public:
     void addRecord(EmployeeSalaryRecord& record);
     vector<string> readRedcordToVector();
+    vector<string> readLinesToVector();
 
 private:
 
