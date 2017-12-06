@@ -2,6 +2,7 @@
 #define employeeservice_h
 
 #include <vector>
+#include <sstream>
 #include "EmployeeSalaryRecord.h"
 #include "EmployeeRepository.h"
 
@@ -19,13 +20,17 @@ class EmployeeService {
       void addRecord(EmployeeSalaryRecord& record);
       void listAllRecords();
       void listRecordsBySecurityNumber(string ssn);
-      bool isValidRecord(EmployeeSalaryRecord& record);
+      void getSalaryForSSNandYear(string ssn, int year);
 
       bool isValidName(EmployeeSalaryRecord& record);
       bool isValidSSN(EmployeeSalaryRecord& record);
       bool isValidSalary(EmployeeSalaryRecord& record);
       bool isValidMonth(EmployeeSalaryRecord& record);
       bool isValidYear(EmployeeSalaryRecord& record);
+
+      bool isSameMonth(EmployeeSalaryRecord& record);
+      bool isSameYear(EmployeeSalaryRecord& record);
+      bool isSameSSN(EmployeeSalaryRecord& record);
 
     private:
         EmployeeRepository _employeeRepo;

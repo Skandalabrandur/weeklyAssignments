@@ -1,5 +1,4 @@
 #include "EmployeeService.h"
-#include <fstream>
 #include <iostream>
 
 void EmployeeService::addRecord(EmployeeSalaryRecord& record){
@@ -24,7 +23,7 @@ void EmployeeService::listAllRecords(){
 
     _records = _employeeRepo.readRedcordToVector();
 
-    for(unsigned int i = 0; i < _records.size(); i++){
+    for(unsigned int i = 0; i < _records.size() - 1; i++){
         cout << _records.at(i) << ", ";
     }
 }
@@ -33,12 +32,11 @@ void EmployeeService::listRecordsBySecurityNumber(string ssn){
     _records = _employeeRepo.readRedcordToVector();
 
     cout << "Records: " << endl;
-    //finding the lines with chosen number needs to be implemented
-    //--------- find a way to only check the social security number --------
-    for(unsigned int i = 0; i < _records.size(); i++){
+
+    for(unsigned int i = 1; i < _records.size(); i += 5){
         if(_records.at(i) == ssn){
             for(unsigned int k = i - 1; k < i + 4; k++){
-                //if sentence to not print a comma at the end
+                //to not print a comma at the end
                 if(!(k == i + 3)){
                     cout << _records.at(k) << ", ";
                 }
@@ -48,9 +46,19 @@ void EmployeeService::listRecordsBySecurityNumber(string ssn){
             }
         }
     }
+}
+
+void EmployeeService::getSalaryForSSNandYear(string ssn, int year){
+    _records = _employeeRepo.readRedcordToVector();
+
+    cout << "Salary: " << endl;
 
 }
 
+
+
+
+//functions for validation of a record
 bool EmployeeService::isValidName(EmployeeSalaryRecord& record) {
     //TO DO: validate name
     string name = record.getName();
@@ -81,11 +89,68 @@ bool EmployeeService::isValidSalary(EmployeeSalaryRecord& record){
 
 bool EmployeeService::isValidMonth(EmployeeSalaryRecord& record){
     //validate month
-    //TO DO: employee may not have multiple record for the same month, the new records should be overwritten
     if(record.getMonth() < 1 || record.getMonth() > 12){
         throw InvalidMonthException();
     }
+    //TO DO: employee may not have multiple records for the same month, the new records should be overwritten
+    cout << "Records: " << endl;
+
+    //if these functions return true then record for that month already exists
+    if(isSameMonth(record) && isSameYear(record) && isSameSSN(record)){
+        throw InvalidMonthException();
+    }
     return true;
+}
+
+bool EmployeeService::isSameMonth(EmployeeSalaryRecord& record){
+    _records = _employeeRepo.readRedcordToVector();
+
+    //change int month to string
+    stringstream ss;
+    int month = record.getMonth();
+    ss << month;
+    string sMonth = ss.str();
+
+    //check if month is the same
+    for(unsigned int i = 3; i < _records.size(); i += 5){
+        if(_records.at(i) == sMonth){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool EmployeeService::isSameYear(EmployeeSalaryRecord& record){
+    _records = _employeeRepo.readRedcordToVector();
+
+    //change int year to string
+    stringstream ss;
+    int year = record.getYear();
+    ss << year;
+    string sYear = ss.str();
+
+    //check if year is the same
+    for(unsigned int i = 4; i < _records.size(); i += 5){
+        if(_records.at(i) == sYear){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool EmployeeService::isSameSSN(EmployeeSalaryRecord& record){
+    _records = _employeeRepo.readRedcordToVector();
+
+    //get social security number
+    string ssn = record.getSSN();
+
+    //check if security number is the same
+    for(unsigned int i = 1; i < _records.size(); i += 5){
+        if(_records.at(i) == ssn){
+            return true;
+        }
+    }
+    return false;
 }
 
 bool EmployeeService::isValidYear(EmployeeSalaryRecord& record){

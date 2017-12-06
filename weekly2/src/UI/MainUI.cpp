@@ -65,7 +65,16 @@ void MainUI::validateUserInput(char input){
     }
     else if(input == 'c'){
         //get total salary for a given year and social security number
-        //_employeeService function call
+        //get input
+        cout << "Social security number: ";
+        string ssn;
+        cin >> ssn;
+        cout << "Year: ";
+        int year;
+        cin >> year;
+        cout << endl;
+
+        _employeeService.getSalaryForSSNandYear(ssn, year);
         mainMenu();
     }
     else if(input == 'd'){
@@ -77,8 +86,6 @@ void MainUI::validateUserInput(char input){
         exit(0);
     }
 }
-
-
 
 EmployeeSalaryRecord MainUI::createRecord(){
     string name;
