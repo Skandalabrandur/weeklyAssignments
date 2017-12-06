@@ -2,13 +2,13 @@
 #include <fstream>
 #include <iostream>
 
-void EmployeeService::addRecord(EmployeeSalaryRecord& record) {
-  if(isValidRecord(record)){
-    _employeeRepo.addRecord(record);
-  }
+void EmployeeService::addRecord(EmployeeSalaryRecord& record){
+    if(isValidSSN(record)){
+       _employeeRepo.addRecord(record);
+    }
 }
 
-void EmployeeService::listAllRecords() {
+void EmployeeService::listAllRecords(){
     string str;
 
     ifstream fin;
@@ -55,30 +55,44 @@ void EmployeeService::listRecordsBySecurityNumber(string ssn){
 
 }
 
-bool EmployeeService::isValidRecord(EmployeeSalaryRecord& record) {
-    //validate name
-    //------------------------
+bool EmployeeService::isValidName(EmployeeSalaryRecord& record) {
+    //TO DO: validate name
 
+        //throw InvalidNameException();
+
+    return true;
+}
+
+bool EmployeeService::isValidSSN(EmployeeSalaryRecord& record){
     //validate social security number
     string SSN = record.getSSN();
     if(SSN.length() != 10){
-        return false;
+        throw InvalidSSNException();
     }
+    return true;
+}
 
+bool EmployeeService::isValidSalary(EmployeeSalaryRecord& record){
     //validate salary
     if(record.getSalary() < 0){
-        return false;
+        throw InvalidSalaryException();
     }
+    return true;
+}
 
+bool EmployeeService::isValidMonth(EmployeeSalaryRecord& record){
     //validate month
+    //TO DO: employee may not have multiple record for the same month, the new records should be overwritten
     if(record.getMonth() < 1 || record.getMonth() > 12){
-        return false;
+        throw InvalidMonthException();
     }
+    return true;
+}
 
+bool EmployeeService::isValidYear(EmployeeSalaryRecord& record){
     //validate year
     if(record.getYear() < 1900 || record.getYear() > 2017){
-        return false;
+        throw InvalidYearException();
     }
-
     return true;
 }

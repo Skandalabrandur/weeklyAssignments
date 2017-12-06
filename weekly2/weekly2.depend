@@ -16,15 +16,15 @@
 	<string>
 	<iostream>
 
-1512510461 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\repositories\employeerepository.cpp
+1512550524 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\repositories\employeerepository.cpp
 	"EmployeeRepository.h"
 	"EmployeeService.h"
 
-1512511008 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\ui\mainui.cpp
+1512551564 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\ui\mainui.cpp
 	"MainUI.h"
 	"stdlib.h"
 
-1512511991 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\services\employeeservice.cpp
+1512553068 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\services\employeeservice.cpp
 	"EmployeeService.h"
 	<fstream>
 	<iostream>
@@ -32,4 +32,29 @@
 1512477502 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\ui\mainui.h
 	"EmployeeService.h"
 	<iostream>
+
+1512550373 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\exceptions\invalidssnexception.cpp
+	"InvalidSSNException.h"
+
+1512550364 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\exceptions\invalidssnexception.h
+
+1512551564 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\exceptions\invalidsalaryexception.cpp
+	"InvalidSalaryException.h"
+
+1512551565 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\exceptions\invalidsalaryexception.h
+
+1512551752 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\exceptions\invalidmonthexception.cpp
+	"InvalidMonthException.h"
+
+1512551752 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\exceptions\invalidmonthexception.h
+
+1512552019 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\exceptions\invalidyearexception.cpp
+	"InvalidYearException.h"
+
+1512552019 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\exceptions\invalidyearexception.h
+
+1512553043 source:c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\src\exceptions\invalidnameexception.cpp
+	"InvalidNameException.h"
+
+1512553043 c:\users\helga eyþórsdóttir\desktop\verk1\weeklyassignments\weekly2\include\exceptions\invalidnameexception.h
 

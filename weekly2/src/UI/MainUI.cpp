@@ -31,7 +31,25 @@ void MainUI::validateUserInput(char input){
         //make new record
         EmployeeSalaryRecord employeeSRecrod(createRecord());
         //save the record
-        _employeeService.addRecord(employeeSRecrod);
+        try{
+            _employeeService.addRecord(employeeSRecrod);
+        }
+        catch(InvalidNameException){
+            cout << "Invalid name." << endl;
+        }
+        catch(InvalidSSNException){
+            cout << "Invalid social security number." << endl;
+        }
+        catch(InvalidSalaryException){
+            cout << "Invalid salary." << endl;
+        }
+        catch(InvalidMonthException){
+            cout << "Invalid month." << endl;
+        }
+        catch(InvalidYearException){
+            cout << "Invalid year." << endl;
+        }
+
         mainMenu();
     }
     else if(input == 'b'){
