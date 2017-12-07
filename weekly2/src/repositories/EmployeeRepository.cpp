@@ -3,7 +3,7 @@
 
 void EmployeeRepository::addRecord(EmployeeSalaryRecord& record) {
     ofstream fout;
-    fout.open("data/records.txt", ios::app);
+    fout.open("data/records.txt");
     fout << record << endl;
     fout.close();
 }

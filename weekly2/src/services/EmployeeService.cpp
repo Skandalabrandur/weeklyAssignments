@@ -61,20 +61,35 @@ void EmployeeService::getSalaryForSSNandYear(string ssn, string year){
 }
 
 void EmployeeService::getHighestSalaryForYear(string year){
+//only works correctly if social security number are ordered in the file
     vector<string> _records = _employeeRepo.readLinesToVector();
     string employeeHighestSalary = "";
     int salary = 0;
     int highestSalary = 0;
 
+    string employeeSSN = "";
+
     for(unsigned int i = 0; i < _records.size(); i++){
         string line = _records.at(i);
         vector<string> words = split(line);
+
+        //checks if last ssn is the same as the current
+        bool same = false;
+        if(employeeSSN == words.at(1)){
+            same = true;
+        }
+        employeeSSN = words.at(1);
 
         if(words.at(4) == year){
             int tempsalary;
             istringstream ss(words.at(2));
             ss >> tempsalary;
-            salary = tempsalary;
+            if(same){
+                salary += tempsalary;
+            }
+            else{
+                salary = tempsalary;
+            }
 
             cout << endl << "comparison: " << endl;
             cout << "salary: " << salary << endl;
