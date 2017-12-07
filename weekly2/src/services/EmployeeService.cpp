@@ -90,7 +90,7 @@ void EmployeeService::getHighestSalaryForYear(string year){
             else{
                 salary = tempsalary;
             }
-
+            //for debugging
             cout << endl << "comparison: " << endl;
             cout << "salary: " << salary << endl;
             cout << "highest salary: " << highestSalary << endl;
@@ -98,6 +98,7 @@ void EmployeeService::getHighestSalaryForYear(string year){
             if(highestSalary < salary){
                 highestSalary = salary;
                 employeeHighestSalary = words.at(0);
+                //for debugging
                 cout << "highest salary name: " << words.at(0) << endl;
             }
         }
