@@ -130,10 +130,6 @@ void EmployeeService::getHighestSalaryForYear(string year){
     }
   }
 
-  cout << "Just for show! Not in final product!" << endl;
-  for(unsigned int i = 0; i < names.size(); i++) {
-    cout << names.at(i) << " total:\t " << salaries[names.at(i)] << endl;
-  }
 
   for(unsigned int i = 0; i < names.size(); i++) {
     if(salaries[names.at(i)] > highestSalary) {
