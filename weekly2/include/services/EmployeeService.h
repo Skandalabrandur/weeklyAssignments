@@ -2,6 +2,7 @@
 #define employeeservice_h
 
 #include <vector>
+#include <map>
 #include <sstream>
 #include "EmployeeSalaryRecord.h"
 #include "EmployeeRepository.h"
@@ -18,6 +19,7 @@ class EmployeeService {
 
     public:
       void addRecord(EmployeeSalaryRecord& record);
+      void deleteOldRecordBeforeAdding(EmployeeSalaryRecord& record);
       void listAllRecords();
       void listRecordsBySecurityNumber(string ssn);
       void getSalaryForSSNandYear(string ssn, string year);

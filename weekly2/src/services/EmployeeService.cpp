@@ -7,6 +7,34 @@ void EmployeeService::addRecord(EmployeeSalaryRecord& record){
     }
 }
 
+void EmployeeService::deleteOldRecordBeforeAdding(EmployeeSalaryRecord& record) {
+  vector<string> records = _employeeRepo.readLinesToVector();
+  stringstream ss;
+  string name = record.getName();
+
+  int year = record.getYear();
+  ss << year;
+  string sYear = ss.str();
+
+  ss.str("");
+  ss.clear();
+
+  int month = record.getMonth();
+  ss << month;
+  string sMonth = ss.str();
+
+
+  for(unsigned int i = 0; i < records.size(); i++) {
+    vector<string> oldRecord = split(records.at(i));
+    if(name == oldRecord.at(0) && sMonth == oldRecord.at(3) && sYear == oldRecord.at(4)) {
+      records.erase(records.begin() + i);
+      break;
+    }
+  }
+
+  _employeeRepo.overwriteRecordWithVector(records);
+}
+
 void EmployeeService::listAllRecords(){
     _records = _employeeRepo.readRedcordToVector();
 
@@ -61,50 +89,61 @@ void EmployeeService::getSalaryForSSNandYear(string ssn, string year){
 }
 
 void EmployeeService::getHighestSalaryForYear(string year){
-//only works correctly if social security number are ordered in the file
-    vector<string> _records = _employeeRepo.readLinesToVector();
-    string employeeHighestSalary = "";
-    int salary = 0;
-    int highestSalary = 0;
+  int highestSalary = 0;
+  string highestSalaryEmployee = "";
+  vector<string> records = _employeeRepo.readLinesToVector();
+  vector<string> names;       //keep names in vector for iteration purposes
+                              //this is because map::at() is C++11
+  //maps allow things like
+  //    salaries["jonas"] = 0;
+  //    salaries["jonas"] += 5000;
+  //    cout << salaries["jonas"] << endl;
+  map<string, int> salaries;  //each name will have a salary record
 
-    string employeeSSN = "";
-
-    for(unsigned int i = 0; i < _records.size(); i++){
-        string line = _records.at(i);
-        vector<string> words = split(line);
-
-        //checks if last ssn is the same as the current
-        bool same = false;
-        if(employeeSSN == words.at(1)){
-            same = true;
-        }
-        employeeSSN = words.at(1);
-
-        if(words.at(4) == year){
-            int tempsalary;
-            istringstream ss(words.at(2));
-            ss >> tempsalary;
-            if(same){
-                salary += tempsalary;
-            }
-            else{
-                salary = tempsalary;
-            }
-            //for debugging
-            cout << endl << "comparison: " << endl;
-            cout << "salary: " << salary << endl;
-            cout << "highest salary: " << highestSalary << endl;
-
-            if(highestSalary < salary){
-                highestSalary = salary;
-                employeeHighestSalary = words.at(0);
-                //for debugging
-                cout << "highest salary name: " << words.at(0) << endl;
-            }
-        }
-
+  //if salary is set to an arbitrarily chosen number it means we
+  //have alread encountered the name and will not add it to
+  //the string vector
+  for(unsigned int i = 0; i < records.size(); i++) {
+    vector<string> record = split(records.at(i));
+    if(salaries[record.at(0)] != 1337) {
+        names.push_back(record.at(0));
+        salaries[record.at(0)] = 1337;
     }
-    cout << "Employee with the highest salary " << year << " was " << employeeHighestSalary << endl;
+  }
+
+  //reset. The reason we don't make a check for 0 initially is
+  //because of NULL concerns
+  for(unsigned int i = 0; i < salaries.size(); i++) {
+    salaries[names.at(i)] = 0;
+  }
+
+  //now let's accumulate salaries for the employees;
+  for(unsigned int i = 0; i < records.size(); i++) {
+    vector<string> record = split(records.at(i));
+    if(record.at(4) == year) {
+      string salaryRecord = record.at(2);
+      istringstream iss(salaryRecord);
+      int salary;
+      iss >> salary;
+
+      salaries[record.at(0)] += salary;
+    }
+  }
+
+  cout << "Just for show! Not in final product!" << endl;
+  for(unsigned int i = 0; i < names.size(); i++) {
+    cout << names.at(i) << " total:\t " << salaries[names.at(i)] << endl;
+  }
+
+  for(unsigned int i = 0; i < names.size(); i++) {
+    if(salaries[names.at(i)] > highestSalary) {
+      highestSalaryEmployee = names.at(i);
+      highestSalary = salaries[names.at(i)];
+    }
+  }
+  cout << endl << endl;
+  cout << highestSalaryEmployee << " has the highest salary at: " << highestSalary << endl;
+
 }
 
 vector<string> EmployeeService::split(string str){
@@ -150,7 +189,7 @@ bool EmployeeService::isValidSSN(EmployeeSalaryRecord& record){
 
 bool EmployeeService::isValidSalary(EmployeeSalaryRecord& record){
     //validate salary
-    if(record.getSalary() < 0){
+    if(record.getSalary() < 0 || record.getSalary() > 2147483647){
         throw InvalidSalaryException();
     }
     return true;
@@ -165,8 +204,10 @@ bool EmployeeService::isValidMonth(EmployeeSalaryRecord& record){
     cout << "Records: " << endl;
 
     //if these functions return true then record for that month already exists
+    //we trigger a deletion of the old record before adding the new one
     if(isSameMonth(record) && isSameYear(record) && isSameSSN(record)){
-        throw InvalidMonthException();
+        deleteOldRecordBeforeAdding(record);
+        cout << "Updating duplicate record..." << endl;
     }
     return true;
 }

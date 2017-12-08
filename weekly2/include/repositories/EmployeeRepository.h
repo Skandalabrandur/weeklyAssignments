@@ -9,6 +9,7 @@ class EmployeeRepository {
 
 public:
     void addRecord(EmployeeSalaryRecord& record);
+    void overwriteRecordWithVector(vector<string> newFile);
     vector<string> readRedcordToVector();
     vector<string> readLinesToVector();
 

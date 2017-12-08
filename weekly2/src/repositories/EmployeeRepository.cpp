@@ -3,8 +3,17 @@
 
 void EmployeeRepository::addRecord(EmployeeSalaryRecord& record) {
     ofstream fout;
-    fout.open("data/records.txt");
+    fout.open("data/records.txt", ios::app);
     fout << record << endl;
+    fout.close();
+}
+
+void EmployeeRepository::overwriteRecordWithVector(vector<string> newFile) {
+    ofstream fout;
+    fout.open("data/records.txt");
+      for(int i = 0; i < newFile.size(); i++) {
+        fout << newFile.at(i) << endl;
+      }
     fout.close();
 }
 
